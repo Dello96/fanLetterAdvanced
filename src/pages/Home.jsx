@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Button from "../components/Button";
+import LetterForm from "../components/LetterForm";
+import Letters from "../components/Letters";
+import Members from "../components/Mebers";
+import IveMain from "../assets/IveMain.jpeg"
 
 
 
@@ -10,7 +14,7 @@ function Home() {
 
   return (
     <div>
-      <nav
+      <div
         style={{
           backgroundColor: "green",
           width: "100%",
@@ -18,10 +22,13 @@ function Home() {
         }}
       >
         Dive Into Ive!
-      </nav>
+        <img src={IveMain}/>
+      </div>
       <body>
         <div>
-          <Button />
+          <Members />
+          <LetterForm />
+          <Letters />
         </div>
       </body>
     </div>
