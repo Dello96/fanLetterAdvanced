@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from "react";
-import Button from "../components/Button";
 import LetterForm from "../components/LetterForm";
 import Letters from "../components/Letters";
 import Members from "../components/Mebers";
+import styled from "styled-components";
 import IveMain from "../assets/IveMain.jpeg"
 
-
+const MainImg = styled.img`
+  width: 100%;
+  object-fit: cover;
+`
 
 function Home() {
+  
   const [data, setData] = useState([]);
   const [coloredbutton, setColoredButton] = useState(true);
   const [member, setMember] = useState("안유진");
-
+  
   return (
     <div>
-      <div
-        style={{
-          backgroundColor: "green",
-          width: "100%",
-          height: "300px",
-        }}
-      >
-        Dive Into Ive!
-        <img src={IveMain}/>
+      <div>
+        <MainImg src={IveMain}></MainImg>
       </div>
       <body>
         <div>
