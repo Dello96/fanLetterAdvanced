@@ -1,14 +1,50 @@
 import React from "react";
+import styled from "styled-components";
 
-function WritedLetter({ member, username, content }) {
+const CardsStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 350px;
+  margin: 20px;
+  align-items: center;
+  background-color: green;
+`;
+const CardNickName = styled.div`
+  width: 230px;
+  height: 50px;
+  display: flex;
+  margin: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: aqua;
+`;
+const CardMember = styled.div`
+  width: 230px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: darkblue;
+`;
+
+const CardContent = styled.div`
+  width: 230px;
+  height: 190px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  background-color: beige;
+`;
+
+function WritedLetter({ member, nickname, content }) {
   return (
-    <div
-      style={{ border: "1px solid black", background: "pink", width: "200px" }}
-    >
-      <div>작성자: {username}</div>
-      <div>받는 멤버: {member}</div>
-      <div>내용: {content}</div>
-    </div>
+    <>
+      <CardsStyle>
+        <CardNickName>닉네임</CardNickName>
+        <CardMember>받는 멤버: {member}</CardMember>
+        <CardContent>내용: {content}</CardContent>
+      </CardsStyle>
+    </>
   );
 }
 
