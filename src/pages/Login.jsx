@@ -80,6 +80,9 @@ function Login() {
               placeholder="아이디를 입력하세요 (4~10글자)"
             />
             <LoginInput
+              onChange={(event) => {
+                setPw(event.target.value);
+              }}
               type="password"
               placeholder="비밀번호를 입력하세요 (4~12글자)"
             />
