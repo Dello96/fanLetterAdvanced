@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const CardsStyle = styled.div`
@@ -9,6 +10,7 @@ const CardsStyle = styled.div`
   margin: 20px;
   align-items: center;
   background-color: green;
+  cursor: pointer;
 `;
 const CardNickName = styled.div`
   width: 230px;
@@ -36,13 +38,18 @@ const CardContent = styled.div`
   background-color: beige;
 `;
 
-function WritedLetter({ member, nickname, content }) {
+function WritedLetter({ letter }) {
+  const navigate = useNavigate();
   return (
     <>
-      <CardsStyle>
-        <CardNickName>닉네임</CardNickName>
-        <CardMember>받는 멤버: {member}</CardMember>
-        <CardContent>내용: {content}</CardContent>
+      <CardsStyle
+        onClick={() => {
+          navigate(`/detail/${letter.id}`);
+        }}
+      >
+        <CardNickName>{letter.nickname}</CardNickName>
+        <CardMember>받는 멤버: {letter.member}</CardMember>
+        <CardContent>내용: {letter.content}</CardContent>
       </CardsStyle>
     </>
   );

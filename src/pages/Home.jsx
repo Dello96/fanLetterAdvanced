@@ -5,6 +5,7 @@ import Letters from "../components/Letters";
 import Members from "../components/Mebers";
 import styled from "styled-components";
 import IveMain from "../assets/IveMain.jpeg";
+import fakeData from "../components/fakeData";
 
 const MainImg = styled.img`
   width: 100%;
@@ -14,6 +15,7 @@ const MainImg = styled.img`
 `;
 
 function Home() {
+  const [letters, setLetters] = useState(fakeData);
   return (
     <div>
       <div>
@@ -23,7 +25,7 @@ function Home() {
       <body>
         <div>
           <Members />
-          <LetterForm />
+          <LetterForm setLetters={setLetters} />
           <Letters />
         </div>
       </body>

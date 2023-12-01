@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { Route, Switch, Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const Container = styled.body`
   display: flex;
@@ -68,47 +69,52 @@ function Login() {
   console.log(isLoginPage);
 
   return (
-    <center>
-      <Container>
-        {isLoginPage ? "로그인" : "회원가입"}
-        {isLoginPage ? (
-          <>
-            <LoginInput
-              onChange={(event) => {
-                setId(event.target.value);
-              }}
-              placeholder="아이디를 입력하세요 (4~10글자)"
-            />
-            <LoginInput
-              onChange={(event) => {
-                setPw(event.target.value);
-              }}
-              type="password"
-              placeholder="비밀번호를 입력하세요 (4~12글자)"
-            />
-          </>
-        ) : (
-          <>
-            <LoginInput placeholder="아이디를 입력하세요 (4~10글자)" />
-            <LoginInput
-              type="password"
-              placeholder="비밀번호를 입력하세요 (4~12글자)"
-            />
-            <LoginInput placeholder="닉네임을 입력하세요 (3~10글자)" />
-          </>
-        )}
-        <WrappingBtn>
+    <>
+      <Header />
+      <center>
+        <Container>
+          {isLoginPage ? "로그인" : "회원가입"}
           {isLoginPage ? (
             <>
-              <LoginsBtn>로그인</LoginsBtn>
-              <BlockedLoginsBtn onClick={togglePage}>회원가입</BlockedLoginsBtn>
+              <LoginInput
+                onChange={(event) => {
+                  setId(event.target.value);
+                }}
+                placeholder="아이디를 입력하세요 (4~10글자)"
+              />
+              <LoginInput
+                onChange={(event) => {
+                  setPw(event.target.value);
+                }}
+                type="password"
+                placeholder="비밀번호를 입력하세요 (4~15글자)"
+              />
             </>
           ) : (
-            <BlockedLoginsBtn onClick={togglePage}>회원가입</BlockedLoginsBtn>
+            <>
+              <LoginInput placeholder="아이디를 입력하세요 (4~10글자)" />
+              <LoginInput
+                type="password"
+                placeholder="비밀번호를 입력하세요 (4~12글자)"
+              />
+              <LoginInput placeholder="닉네임을 입력하세요 (1~10글자)" />
+            </>
           )}
-        </WrappingBtn>
-      </Container>
-    </center>
+          <WrappingBtn>
+            {isLoginPage ? (
+              <>
+                <LoginsBtn>로그인</LoginsBtn>
+                <BlockedLoginsBtn onClick={togglePage}>
+                  회원가입
+                </BlockedLoginsBtn>
+              </>
+            ) : (
+              <BlockedLoginsBtn onClick={togglePage}>회원가입</BlockedLoginsBtn>
+            )}
+          </WrappingBtn>
+        </Container>
+      </center>
+    </>
   );
 }
 

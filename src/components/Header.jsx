@@ -44,11 +44,14 @@ function Header() {
   const refreshHome = () => {
     window.location.reload();
   };
+  const goToHome = () => {
+    navigate("/");
+  };
 
   return (
     <div>
       <WrappingHeader>
-        <HeadIcon onClick={refreshHome}>
+        <HeadIcon onClick={goToHome}>
           <IconControll src={IveLogo}></IconControll>
         </HeadIcon>
         <HeaderLoginBtn onClick={navigateLogin}>로그인</HeaderLoginBtn>

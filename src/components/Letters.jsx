@@ -26,12 +26,7 @@ function Letters() {
     <>
       <WritedLetters>
         {lettersOnSelectedMember.map((letter) => (
-          <WritedLetter
-            key={letter.id}
-            member={letter.member}
-            username={letter.nickname}
-            content={letter.content}
-          />
+          <WritedLetter letter={letter} />
         ))}
       </WritedLetters>
     </>
