@@ -32,6 +32,7 @@ const WritingLetter = styled.input`
   justify-content: center;
   align-items: center;
   background-color: white;
+  border-color: #a25772;
   border-radius: 20px;
   margin-top: 20px;
 `;
@@ -44,6 +45,7 @@ const WritingNinckName = styled.input`
   align-items: center;
   background-color: white;
   border-radius: 20px;
+  border-color: #a25772;
   margin-top: 20px;
 `;
 
@@ -56,9 +58,12 @@ const WrappingLetterForm = styled.div`
 const SubmitBtn = styled.button`
   width: 100px;
   height: 35px;
-  background-color: transparent;
+  background-color: #7c93c3;
+  border: 0px;
+  border-radius: 20px;
   font-size: 15px;
   margin: 10px;
+  cursor: pointer;
 `;
 
 function LetterForm({ setLetters }) {
@@ -79,13 +84,6 @@ function LetterForm({ setLetters }) {
       writedTo: selectedMember,
       createdAt: new Date(),
     };
-    setLetters((prev) => [newLetter, ...prev]);
-    console.log(newLetter.nickname);
-    console.log(newLetter.content);
-    console.log(newLetter.writedTo);
-    console.log(newLetter.createdAt);
-    setNickName("");
-    setText("");
   };
   return (
     <Form>

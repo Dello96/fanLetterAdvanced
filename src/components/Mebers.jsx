@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { memberActionCreators } from "../redux/memberslice";
+import { useSelector, useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
+import { setMember } from "../redux/modules/member";
 
 const members = [
   { name: "안유진" },
@@ -36,18 +36,15 @@ const ButtonBox = styled.button`
 `;
 
 function Members() {
+  const selectedMember = useSelector((state) => state.member);
+
   const dispatch = useDispatch();
-  const [activeMember, setActiveMember] = useState("안유진");
 
-  const handleClickMember = (memberName) => {
-    const createSelectMemberAction =
-      memberActionCreators.createSelectMemberAction;
-
-    const selectMemberAction = createSelectMemberAction({
-      memberName: memberName,
-    });
-    dispatch(selectMemberAction);
-    setActiveMember(memberName);
+  const handleSelectedMember = (event) => {
+    if (event.target === event.currentTarget) {
+      return;
+    }
+    dispatch(setMember(event.target.textContent));
   };
 
   return (
@@ -64,8 +61,8 @@ function Members() {
       {members.map((member) => (
         <li>
           <ButtonBox
-            $activeMember={activeMember}
-            onClick={() => handleClickMember(member.name)}
+            $selectedMember={selectedMember}
+            onClick={() => handleSelectedMember(member.name)}
           >
             {member.name}
           </ButtonBox>
