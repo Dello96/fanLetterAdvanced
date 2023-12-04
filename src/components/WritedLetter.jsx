@@ -1,5 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { getFormattedDate } from "../util/data";
 
 const CardsStyle = styled.div`
   display: flex;
@@ -8,41 +10,70 @@ const CardsStyle = styled.div`
   height: 350px;
   margin: 20px;
   align-items: center;
-  background-color: green;
+  background-color: #7c93c3;
+  border-radius: 20px;
+  cursor: pointer;
 `;
 const CardNickName = styled.div`
   width: 230px;
   height: 50px;
+  margin-top: 10px;
   display: flex;
-  margin: 20px;
   align-items: center;
   justify-content: center;
-  background-color: aqua;
+  border-radius: 20px;
+  background-color: #eef5ff;
 `;
 const CardMember = styled.div`
   width: 230px;
   height: 50px;
   display: flex;
   align-items: center;
-  background-color: darkblue;
+  border-radius: 20px;
+  background-color: #eef5ff;
 `;
 
 const CardContent = styled.div`
   width: 230px;
   height: 190px;
+  border-radius: 20px;
   margin: 10px;
   display: flex;
   align-items: center;
   background-color: beige;
 `;
 
-function WritedLetter({ member, nickname, content }) {
+const NickAndDate = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const DateSpace = styled.time`
+  justify-content: center;
+  display: flex;
+  width: 230px;
+  height: 20px;
+  background-color: transparent;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
+`;
+
+function WritedLetter({ letter }) {
+  const navigate = useNavigate();
   return (
     <>
-      <CardsStyle>
-        <CardNickName>닉네임</CardNickName>
-        <CardMember>받는 멤버: {member}</CardMember>
-        <CardContent>내용: {content}</CardContent>
+      <CardsStyle
+        onClick={() => {
+          navigate(`/detail/${letter.id}`);
+        }}
+      >
+        <NickAndDate>
+          <CardNickName>{letter.nickname}</CardNickName>
+          <DateSpace>{getFormattedDate(letter.createdAt)}</DateSpace>
+        </NickAndDate>
+        <CardMember>받는 멤버: {letter.member}</CardMember>
+        <CardContent>내용: {letter.content}</CardContent>
       </CardsStyle>
     </>
   );

@@ -32,6 +32,7 @@ const WritingLetter = styled.input`
   justify-content: center;
   align-items: center;
   background-color: white;
+  border-color: #a25772;
   border-radius: 20px;
   margin-top: 20px;
 `;
@@ -44,6 +45,7 @@ const WritingNinckName = styled.input`
   align-items: center;
   background-color: white;
   border-radius: 20px;
+  border-color: #a25772;
   margin-top: 20px;
 `;
 
@@ -56,20 +58,25 @@ const WrappingLetterForm = styled.div`
 const SubmitBtn = styled.button`
   width: 100px;
   height: 35px;
-  background-color: transparent;
+  background-color: #7c93c3;
+  border: 0px;
+  border-radius: 20px;
   font-size: 15px;
   margin: 10px;
+  cursor: pointer;
 `;
 
-function LetterForm() {
+function LetterForm({ setLetters }) {
   const [nickName, setNickName] = useState("");
   const [text, setText] = useState("");
   const [selectedMember, setSelectedMember] = useState("안유진");
+
   const onAddLetter = (event) => {
     event.preventDefault();
     if (!nickName || !text) {
       return alert("닉네임과 내용 입력은 필수입니다!");
     }
+
     const newLetter = {
       id: uuid(),
       nickname: nickName,
@@ -79,7 +86,7 @@ function LetterForm() {
     };
   };
   return (
-    <Form onSubmit={onAddLetter}>
+    <Form>
       <SelectMember onChange={(event) => setSelectedMember(event.target.value)}>
         {members.map((item) => {
           return <option>{item.name}</option>;
@@ -97,7 +104,7 @@ function LetterForm() {
           placeholder="멤버에게 한 마디!"
         />
       </WrappingLetterForm>
-      <SubmitBtn>보내기!</SubmitBtn>
+      <SubmitBtn onClick={onAddLetter}>보내기!</SubmitBtn>
     </Form>
   );
 }
